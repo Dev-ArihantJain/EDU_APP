@@ -1,0 +1,108 @@
+.form-box {
+    margin: auto;
+    position: absolute;
+    opacity: 90%;
+    background: black;
+    padding-right: 70px;
+    padding-left: 70px;
+    visibility: visible;
+    border-radius: 20px;
+    /* box-shadow: 10px 10px 1000px 100px rgba(1, 230, 255, 0.733); */
+    animation: glowing 20s linear infinite;
+    /* backdrop-filter: blur(100px); */
+}
+
+
+label {
+    color: white;
+    width: 100%;
+    text-align: center;
+}
+
+
+.login-btn:hover {
+    transform: scale(1.03);
+    background-color: #7FFFD4;
+    color: #1E90FF;
+}
+
+.show {
+    animation: popup 1s ease-out 1;
+    position: absolute;
+    inset: 0;
+    align-content: center;
+}
+
+
+/* for chrome to hide scrollbar */
+&::-webkit-scrollbar {
+    display: none;
+}
+
+
+@keyframes popup {
+    0% {
+        scale: 0;
+        z-index: 10;
+        rotate: 0deg;
+    }
+
+    50% {
+        scale: 1;
+        rotate: 380deg;
+    }
+
+    60% {
+        scale: 1;
+        rotate: 345deg;
+    }
+
+    70% {
+        scale: 1;
+        rotate: 370deg;
+    }
+
+    85% {
+        scale: 1;
+        rotate: 355deg;
+    }
+
+    100% {
+        scale: 1;
+        z-index: 10;
+        rotate: 360deg;
+    }
+
+}
+
+
+@keyframes glowing {
+    0% {
+        box-shadow: 10px 10px 1000px 100px rgba(1, 230, 255, 0.3);
+    }
+
+    20% {
+        box-shadow: 10px 10px 1000px 100px rgba(4, 241, 99, 0.733);
+    }
+
+    40% {
+        box-shadow: 10px 10px 1000px 100px rgba(192, 244, 3, 0.733);
+    }
+
+    60% {
+        box-shadow: 10px 10px 1000px 100px rgba(255, 128, 1, 0.733);
+    }
+
+    80% {
+        box-shadow: 10px 10px 1000px 100px rgba(242, 1, 255, 0.733);
+    }
+
+    100% {
+        box-shadow: 10px 10px 1000px 100px rgba(1, 230, 255, 0.3);
+    }
+}
+
+.show.active {
+    -webkit-backdrop-filter: blur(100px);
+    backdrop-filter: blur(100px);
+}

@@ -1,0 +1,5 @@
+/backend/node_modules
+/client/edtech/node_modules
+.env
+/backend.env
+/client/edtech.env
