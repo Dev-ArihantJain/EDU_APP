@@ -2,7 +2,7 @@ import {react,useState} from "react"
 import {getAuth,signOut,onAuthStateChanged,GoogleAuthProvider,signInWithPopup,signInWithEmailAndPassword,createUserWithEmailAndPassword,} from "firebase/auth";
 import {initializeApp} from "firebase/app";
 import {getDatabase, ref, set ,get , child} from "firebase/database";
-import 'dotenv/config';
+// import 'dotenv/config';
 
 
 

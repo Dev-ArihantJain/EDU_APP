@@ -1,4 +1,4 @@
-import 'dotenv/config';
+// import 'dotenv/config';
 import React ,{useContext,useEffect}  from 'react'
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 import { useNavigate } from 'react-router-dom';
