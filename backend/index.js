@@ -36,9 +36,12 @@ app.post('/my-server/create_order', async (req, res) => {
 
 });
 
+app.post('*', async (req, res) => {
+    console.log(req.body);
+    res.send.json('Hello World')});
+
 app.post('/', async (req, res) => {
     res.send('Hello World')});
-
 
 app.post('/my-server/complete_order', async (req, res) => {
 
