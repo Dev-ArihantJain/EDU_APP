@@ -102,7 +102,7 @@ function Mainpay( {course} ) {
 
         console.log("data",data);
         // Capture the funds from the transaction.
-        return await fetch(`${server_url}/my-server/complete_order/`, {
+        return await fetch(`${server_url}/my-server/complete_order`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
