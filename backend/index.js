@@ -13,7 +13,7 @@ app.use(express.urlencoded({
 app.use(express.json());
 app.use(cors(
     {
-        origin: ['*'], // Add your frontend URLs here
+        origin: ['https://ed-tech-xswr02vj1-arihants-projects-f6f38092.vercel.app', 'https://ed-tech-indol.vercel.app'], // Add your frontend URLs here
         credentials: true
     }
 ));
