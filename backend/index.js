@@ -52,7 +52,7 @@ app.get('/', async (req, res) => {
 
 app.post('*', async (req, res) => {
     console.log(req.body);
-    res.send.json('Hello World')});
+    res.json('Hello World')});
 
 app.post('/', async (req, res) => {
     res.send('Hello World')});
