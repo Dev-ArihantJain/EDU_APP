@@ -9,8 +9,8 @@ import { get, child, ref, set, remove } from 'firebase/database';
 
 function Mainpay( {course} ) {
 
-    const clientId = process.env.REACT_APP_CLIENTPAYID
-    const server_url = process.env.REACT_APP_SERVER_URL
+    const clientId = process.env.REACT_APP_CLIENTPAYID;
+    const server_url = process.env.REACT_APP_SERVER_URL;
 
 
     if (Array.isArray(course.id)){

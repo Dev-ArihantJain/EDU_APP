@@ -11,7 +11,12 @@ app.use(express.urlencoded({
 }));
 
 app.use(express.json());
-app.use(cors());
+app.use(cors(
+    {
+        origin: ['https://ed-tech-indol.vercel.app', 'https://ed-tech-git-main-arihants-projects-f6f38092.vercel.app', 'https://ed-tech-hnilmc4ut-arihants-projects-f6f38092.vercel.app'], // Add your frontend URLs here
+        credentials: true
+    }
+));
  
 
 const port = process.env.PORT || 3000;
