@@ -39,6 +39,7 @@ function Mainpay( {course} ) {
     
     useEffect(() => async () => {
         const  fetchdata= async () => {
+            console.log("fetching data");
             try {
                 const snapshot = await get(child(ref(db), `/courses`));
                 if (snapshot.exists()) {
