@@ -99,44 +99,49 @@ function Mainpay( {course} ) {
         }
     }
     const onApprove = async (data) => {
-
-        console.log("data",data);
-        // Capture the funds from the transaction.
-        return await fetch(`${server_url}/my-server/complete_order`, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-                // orderID: data,
-                orderID: data.orderID,
-            }),
-        }).then( async (response)=>{response.json();
-        //added to cart
-
-        for (let key in purchaseIds){
-            const itemRef = ref(db, `users/${user}/cart/${purchaseIds[key]}`);
-            await remove(itemRef);
-            console.log("course id is ",key);
-        await set(ref(db,'users/'+ user +'/purchases/'+ purchaseIds[key]),{
-            id : allcourses[purchaseIds[key]].id, //course.id,
-            title :allcourses[purchaseIds[key]].title, //course.title,
-            price : allcourses[purchaseIds[key]].price, //course.price,
-            order_id : data.orderID,
-            payer_id : data.payerID
-           }
-           )
-           .then((result) => {
-             console.log("data inserted successfully");
-             }).catch((err) => {
-               console.log("user login with error and data not inserted", err);
-             })
+        console.log("Transaction data:", data);
+    
+        try {
+            // Capture the funds from the transaction.
+            const response = await fetch(`${server_url}/my-server/complete_order`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ orderID: data.orderID }),
+            });
+    
+            if (!response.ok) {
+                throw new Error(`Server error: ${response.statusText}`);
             }
+    
+            const responseData = await response.json();
+            console.log("Capture data:", responseData);
+    
+            // Process the purchase IDs and update Firebase
+            for (let id of purchaseIds) {
+                const itemRef = ref(db, `users/${user}/cart/${id}`);
+                await remove(itemRef);
+    
+                console.log("Removing item from cart with ID:", id);
+    
+                await set(ref(db, `users/${user}/purchases/${id}`), {
+                    id: allcourses[id].id,
+                    title: allcourses[id].title,
+                    price: allcourses[id].price,
+                    order_id: data.orderID,
+                    payer_id: data.payerID,
+                });
+    
+                console.log("Purchase data updated successfully for ID:", id);
             }
-    )
-        .then((data) => {
-            // navigate('/');   
-            window.location.assign("/"); 
+    
+            // Redirect to home page and show confirmation alert
+            window.location.assign("/");
             alert(`Transaction completed by ${data.payer.name.given_name}`);
-        })
+    
+        } catch (error) {
+            console.error("Error during transaction approval:", error);
+            alert("An error occurred while processing the transaction. Please try again.");
+        }
     };
 
     const styles = {
