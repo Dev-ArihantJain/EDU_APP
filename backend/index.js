@@ -13,10 +13,15 @@ app.use(express.urlencoded({
 app.use(express.json());
 app.use(cors(
     {
-        origin: ['https://ed-tech-indol.vercel.app', 'https://ed-tech-git-main-arihants-projects-f6f38092.vercel.app', 'https://ed-tech-hnilmc4ut-arihants-projects-f6f38092.vercel.app'], // Add your frontend URLs here
+        origin: ['*'], // Add your frontend URLs here
         credentials: true
     }
 ));
+
+app.use((req, res, next) => {
+    res.set('Cache-Control', 'no-store');
+    next();
+});
  
 
 const port = process.env.PORT || 3000;
