@@ -33,7 +33,7 @@ function Mainpay( {course} ) {
     
     const db = usefirebase.db;
     const user = useuser.user.uid;
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
   
     
     
@@ -133,7 +133,8 @@ function Mainpay( {course} ) {
             }
     )
         .then((data) => {
-            navigate('/');    
+            // navigate('/');   
+            window.location.assign("/"); 
             alert(`Transaction completed by ${data.payer.name.given_name}`);
         })
     };
