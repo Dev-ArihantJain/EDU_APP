@@ -12,10 +12,10 @@ export const FirebaseContext = createContext()
 
   const FirebaseContextProvider = ({children}) => {
 
-    const firebaseApiKey = process.env.REACT_APP_FIREBASE_API_KEY
-    const firebaseauthdomain = process.env.REACT_APP_FIREBASE_AUTH_DOMAIN
-    const firebaseappid = process.env.REACT_APP_FIREBASE_APP_ID
-    const firebasedburl = process.env.REACT_APP_FIREBASE_DB_URL
+    const firebaseApiKey = process.env.REACT_APP_FIREBASE_API_KEY;
+    const firebaseauthdomain = process.env.REACT_APP_FIREBASE_AUTH_DOMAIN;
+    const firebaseappid = process.env.REACT_APP_FIREBASE_APP_ID;
+    const firebasedburl = process.env.REACT_APP_FIREBASE_DB_URL;
     
     const firebaseConfig = {
         apiKey: firebaseApiKey,
