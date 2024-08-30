@@ -62,7 +62,8 @@ app.post('/my-server/complete_order', async (req, res) => {
         console.log("orderID", orderID);
         try {
             const capturedata = await paypal.completeOrder(orderID);
-            res.json(capturedata); // Use res.json to send JSON response
+            console.log("Order completed successfully:", capturedata);
+            res.send(capturedata); // Use res.json to send JSON response
         } catch (error) {
             console.error("Error completing order:", error);
             res.status(500).json({ message: 'Something went wrong', error: error.message });
