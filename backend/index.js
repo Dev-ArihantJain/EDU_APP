@@ -5,7 +5,6 @@ import cors from 'cors';
 import Mail from './controller/sendmail.js';
 
 const app = express();
-app.use(express.json());
 app.use(express.urlencoded({
     extended: true
 }));
@@ -57,17 +56,17 @@ app.post('*', async (req, res) => {
 app.post('/', async (req, res) => {
     res.send('Hello World')});
 
-app.post('/my-server/complete_order', async (req, res) => {
-
-    const {orderID}= req.body;
-    console.log("orderID",orderID);
-try{
-    const capturedata= await paypal.completeOrder(orderID);
-    res.send(capturedata);
-}catch{
-    res.status(500).res.send(error.message) || 'Something went wrong';
-}
-});
+    app.post('/my-server/complete_order', async (req, res) => {
+        const { orderID } = req.body;
+        console.log("orderID", orderID);
+        try {
+            const capturedata = await paypal.completeOrder(orderID);
+            res.json(capturedata); // Use res.json to send JSON response
+        } catch (error) {
+            console.error("Error completing order:", error);
+            res.status(500).json({ message: 'Something went wrong', error: error.message });
+        }
+    });
 
 app.post('/newsignup', async (req, res) => {
     try {
