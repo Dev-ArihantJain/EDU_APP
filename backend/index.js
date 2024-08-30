@@ -12,10 +12,11 @@ app.use(express.urlencoded({
 app.use(express.json());
 app.use(cors(
     {
-        origin: ['https://ed-tech-xswr02vj1-arihants-projects-f6f38092.vercel.app', 'https://ed-tech-indol.vercel.app','ed-tech-git-main-arihants-projects-f6f38092.vercel.app','*'], // Add your frontend URLs here
+        origin: ['https://ed-tech-xswr02vj1-arihants-projects-f6f38092.vercel.app', 'https://ed-tech-indol.vercel.app','ed-tech-git-main-arihants-projects-f6f38092.vercel.app', '*'], // Add your frontend URLs here
         credentials: true
     }
 ));
+
 
 app.use((req, res, next) => {
     res.set('Cache-Control', 'no-store');
@@ -56,12 +57,12 @@ app.post('*', async (req, res) => {
 app.post('/', async (req, res) => {
     res.send('Hello World')});
 
-    app.post('/my-server/complete_order', async (req, res) => {
+app.post('/my-server/complete_order', async (req, res) => {
         const { orderID } = req.body;
         console.log("orderID", orderID);
         try {
             const capturedata = await paypal.completeOrder(orderID);
-            res.json(capturedata); // Use res.json to send JSON response
+            res.send(capturedata); // Use res.json to send JSON response
         } catch (error) {
             console.error("Error completing order:", error);
             res.status(500).json({ message: 'Something went wrong', error: error.message });
