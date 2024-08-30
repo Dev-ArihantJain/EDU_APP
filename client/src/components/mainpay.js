@@ -37,8 +37,8 @@ function Mainpay( {course} ) {
   
     
     
-    useEffect(() => async () => {
-        const  fetchdata= async () => {
+    useEffect(() => {
+        const fetchdata = async () => {
             console.log("fetching data");
             try {
                 const snapshot = await get(child(ref(db), `/courses`));
@@ -50,14 +50,14 @@ function Mainpay( {course} ) {
                 }
             } catch (error) {
                 console.error("Error fetching data:", error);
-        }
-        finally {
-          console.log("finally");
-          setLoading(false); // Ensure loading is set to false whether fetch succeeds or fails
-        }
-    };
-    fetchdata();
-    },[])
+            } finally {
+                console.log("finally");
+                setLoading(false); 
+            }
+        };
+
+        fetchdata();
+    }, [db, user]);
 
     const initialOptions = {
         "clientId": clientId,
