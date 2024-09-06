@@ -56,7 +56,7 @@ export default function Mail(req) {
     };
   
 
-const sendMail = async (transporter, info) => {
+const SendMail = async (transporter, info) => {
     try {
         await transporter.sendMail(info);
         console.log("Message sent: %s", info);
@@ -68,7 +68,7 @@ const sendMail = async (transporter, info) => {
     }
 }
 
-sendMail(transporter, info).then(async() => {
+SendMail(transporter, info).then(async() => {
     console.log("Email sent successfully");
     return info;
 }).catch((error) => {
