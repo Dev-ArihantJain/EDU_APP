@@ -27,11 +27,24 @@ label {
 }
 
 .show {
-    animation: popup 1s ease-out 1;
-    position: absolute;
+    animation: popup 3s cubic-bezier(0.68, -0.55, 0.27, 1.75) 1;
+    position: fixed;
+    top: 0;
     inset: 0;
     align-content: center;
+    height: 100vh;
+    min-height: 100vh;
 }
+
+/* .show {
+    animation: popup 2s ease-out 1;
+    position: fixed;
+    top: 0;
+    inset: 0;
+    align-content: center;
+    height: 100vh;
+    min-height: 100vh;
+} */
 
 
 /* for chrome to hide scrollbar */
@@ -39,8 +52,7 @@ label {
     display: none;
 }
 
-
-@keyframes popup {
+/* @keyframes popup {
     0% {
         scale: 0;
         z-index: 10;
@@ -73,7 +85,34 @@ label {
         rotate: 360deg;
     }
 
+} */
+
+
+@keyframes popup {
+    0% {
+        transform: scale(0) rotate(0deg);
+        opacity: 0;
+    }
+
+    25% {
+        transform: scale(1.2) rotate(90deg);
+        opacity: 1;
+    }
+
+    50% {
+        transform: scale(0.9) rotate(180deg);
+    }
+
+    75% {
+        transform: scale(1.1) rotate(270deg);
+    }
+
+    100% {
+        transform: scale(1) rotate(360deg);
+        opacity: 1;
+    }
 }
+
 
 
 @keyframes glowing {

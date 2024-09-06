@@ -126,7 +126,7 @@ const LoginForm = () => {
 
 return ( 
     <div className= "show " >
-      <div className="login-form w-full flex justify-center items-center absolute z-10">
+      <div className="login-form w-full flex justify-center items-center min-h-screen relative z-10">
         <div className="form-box solid" onClick={(e) => e.stopPropagation()} >
 
         {showSignIn ? (
@@ -164,7 +164,7 @@ return (
         ) : (
 
           <form className="w-auto" id="signUp">
-            <h1 className="login-text  text-white border-b-2 border-white leading-[6vh] font-bold text-center flex justify-center items-center pt-[2vh]">Register
+            <h1 className="login-text  text-white border-b-2 border-white leading-[6vh] font-bold text-center flex justify-center items-center relative pt-[2vh]">Register
             </h1>
             
             <label>Email</label>
