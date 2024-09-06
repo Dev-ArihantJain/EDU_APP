@@ -34,8 +34,6 @@ const endpoint_url = environment === 'sandbox' ? 'https://api-m.sandbox.paypal.c
 app.post('/my-server/create_order', async (req, res) => {
     try{
         console.log(req.body);
-        console.log("emial",req.body.email);
-
         const order = await paypal.createOrder(req.body)
         console.log(order);
         res.json(order);
@@ -51,12 +49,6 @@ app.get('/', async (req, res) => {
     res.send('Hello World');
 });
 
-app.post('*', async (req, res) => {
-    console.log(req.body);
-    res.json('Hello World')});
-
-app.post('/', async (req, res) => {
-    res.send('Hello World')});
 
 app.post('/my-server/complete_order', async (req, res) => {
         const { orderID } = req.body;
